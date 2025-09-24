@@ -1,0 +1,78 @@
+name: CI / Secure Pipeline (Advanced)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-scan-advanced:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ Checkout repo
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2️⃣ Set up Python
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest cyclonedx-bom
+
+      # 4️⃣ Run tests
+      - name: Run unit tests
+        run: pytest tests/
+
+      # 5️⃣ Build Docker image
+      - name: Build Docker image
+        run: docker build -t task-manager-api:latest .
+
+      # 6️⃣ Generate SBOM (CycloneDX)
+      - name: Generate SBOM
+        run: cyclonedx-py -o sbom.xml
+
+      # 7️⃣ Trivy container scan (report-only)
+      - name: Trivy container scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: task-manager-api:latest
+          format: 'json'
+          output: trivy-container.json
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH,MEDIUM'
+
+      # 8️⃣ Trivy IaC scan (report-only)
+      - name: Trivy IaC scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: 'iac'
+          directory: ./k8s   # or ./terraform if using Terraform
+          format: 'json'
+          output: trivy-iac.json
+          exit-code: '0'
+          severity: 'CRITICAL,HIGH,MEDIUM'
+
+      # 9️⃣ Snyk dependency scan (report-only)
+      - name: Snyk dependency scan
+        uses: snyk/actions@master
+        with:
+          command: test
+          continue-on-failure: true
+
+      # 🔟 Upload artifacts (reports + SBOM)
+      - name: Upload scan reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: security-reports
+          path: |
+            sbom.xml
+            trivy-container.json
+            trivy-iac.json
