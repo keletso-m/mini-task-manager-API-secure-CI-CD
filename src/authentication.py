@@ -3,8 +3,8 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import jwt
 import datetime
 from functools import wraps
-from database import get_db
-from security_logger import log_security_event
+from .database import get_db
+from .security_logger import log_security_event
 
 auth_bp = Blueprint("auth", __name__)
 
