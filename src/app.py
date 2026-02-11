@@ -1,8 +1,8 @@
 from flask import Flask
-from config import Config
-from database import init_db
-from authentication import auth_bp
-from tasks import tasks_bp
+from .config import Config
+from .database import init_db
+from .authentication import auth_bp
+from .tasks import tasks_bp
 
 def create_app():
     app = Flask(__name__)
