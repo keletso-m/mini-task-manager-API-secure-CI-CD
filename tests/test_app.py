@@ -1,14 +1,7 @@
 import pytest
 import json
-import sys
-import os
-import jwt
-import datetime
 
-# Add parent directory to path to import app
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from app.app import app, init_db
+from src.app import app, init_db
 
 @pytest.fixture
 def client():
