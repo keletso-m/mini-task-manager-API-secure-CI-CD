@@ -27,6 +27,7 @@ jobs:
     
     - name: Run tests with coverage
       run: |
+        export PYTHONPATH=$PYTHONPATH:$(pwd)
         pytest tests/ -v
     
     - name: Upload coverage reports
