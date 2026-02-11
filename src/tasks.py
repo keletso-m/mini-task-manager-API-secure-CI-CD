@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from database import get_db
-from authentication import token_required
+from .database import get_db
+from .authentication import token_required
 
 tasks_bp = Blueprint("tasks", __name__)
 
