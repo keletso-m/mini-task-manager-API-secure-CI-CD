@@ -1,11 +1,11 @@
-# 🔐 Task Manager API
+# Task Manager API
 
 ![CI/CD Pipeline](https://github.com/YOUR_USERNAME/task-manager-api/workflows/CI/CD%20Pipeline/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 A secure, production-ready REST API for task management built with Flask. This project demonstrates modern DevOps practices including containerization, automated testing, security scanning, and CI/CD pipelines.
 
-## ✨ Features
+## Features
 
 - **Authentication & Authorization**
   - User registration with password hashing (Werkzeug)
@@ -31,7 +31,7 @@ A secure, production-ready REST API for task management built with Flask. This p
   - GitHub Actions workflows
   - Multi-stage security gates
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
@@ -82,7 +82,7 @@ A secure, production-ready REST API for task management built with Flask. This p
    docker run -p 5000:5000 task-manager-api
    ```
 
-## 📖 API Documentation
+## API Documentation
 
 ### Authentication Endpoints
 
@@ -221,7 +221,7 @@ GET /health
 }
 ```
 
-## 🧪 Testing
+## Testing
 
 The project includes comprehensive unit tests covering:
 - User registration and authentication
@@ -239,7 +239,7 @@ pytest tests/ -v
 pytest tests/ --cov=app --cov-report=html
 ```
 
-## 🔒 Security
+## Security
 
 This project implements multiple security layers:
 
@@ -253,7 +253,7 @@ This project implements multiple security layers:
 
 Security scans run automatically on every push via GitHub Actions. Check the Actions tab for results.
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 task-manager-api/
@@ -271,7 +271,7 @@ task-manager-api/
 └── README.md               # This file
 ```
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Backend Framework:** Flask 3.0
 - **Authentication:** PyJWT 2.8
@@ -281,7 +281,7 @@ task-manager-api/
 - **CI/CD:** GitHub Actions
 - **Security Scanning:** Snyk, Trivy, CodeQL
 
-## 🚧 Future Enhancements
+## Future Enhancements
 
 - [ ] Migrate to PostgreSQL for production
 - [ ] Add Prometheus metrics endpoint
@@ -294,7 +294,7 @@ task-manager-api/
 - [ ] Email notifications
 - [ ] Swagger/OpenAPI documentation
 
-## 📝 Environment Variables
+## Environment Variables
 
 Create a `.env` file for production:
 
@@ -304,7 +304,7 @@ DATABASE_URL=sqlite:///tasks.db  # or postgresql://...
 FLASK_ENV=production
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
@@ -312,17 +312,15 @@ FLASK_ENV=production
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author
+## Author
 
-**Your Name**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your Profile](https://linkedin.com/in/YOUR_PROFILE)
+**keletso Monyamane**
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Built as a learning project for DevOps and security best practices
 - Inspired by modern cloud-native application patterns
